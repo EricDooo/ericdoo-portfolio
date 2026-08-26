@@ -12,6 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Env files, keys, and secrets — never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.ppk
+id_rsa*
+id_ed25519*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
