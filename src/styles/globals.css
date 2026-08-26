@@ -1,0 +1,18 @@
+@import "./theme.css";
+
+/* Tailwind's preflight already resets margins/borders/etc. This is just the
+   handful of things a portfolio actually needs on top of that. */
+
+html {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+}

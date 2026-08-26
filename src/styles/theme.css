@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens as plain CSS custom properties, mapped into Tailwind's
+ * theme namespace below. Components use Tailwind utilities (bg-background,
+ * text-foreground, etc.) and never see a `dark:` variant — the underlying
+ * --background/--foreground/... values themselves switch, so one utility
+ * class works in every mode.
+ *
+ * Three states, in increasing priority:
+ *   1. :root                                   - light (the default)
+ *   2. prefers-color-scheme: dark               - system default, unless
+ *                                                  overridden below
+ *   3. [data-theme="dark" | "light"] on <html>   - explicit user choice,
+ *                                                  set by useTheme()
+ */
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+
+  --surface: #f5f5f5;
+  --border: #e5e5e5;
+
+  --primary: #111111;
+  --primary-foreground: #ffffff;
+  --muted: #666666;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #111111;
+    --foreground: #f5f5f5;
+
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+
+    --primary: #ffffff;
+    --primary-foreground: #111111;
+    --muted: #999999;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #111111;
+  --foreground: #f5f5f5;
+
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+
+  --primary: #ffffff;
+  --primary-foreground: #111111;
+  --muted: #999999;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --container-content: 1100px;
+
+  /* System font stack -- zero network requests, instant first paint. */
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
