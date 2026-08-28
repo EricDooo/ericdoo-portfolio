@@ -5,7 +5,7 @@ import { FileTextIcon, FolderIcon, HomeIcon, PencilIcon } from '../ui/icons'
 
 const tabs = [
   { to: '/', label: 'Home', end: true, icon: HomeIcon },
-  { to: '/projects', label: 'Projects Archive', icon: FolderIcon },
+  { to: '/projects', label: 'Projects', icon: FolderIcon },
   { to: '/blog', label: 'Blog', icon: PencilIcon },
   { to: '/resume', label: 'Resume', icon: FileTextIcon },
 ]

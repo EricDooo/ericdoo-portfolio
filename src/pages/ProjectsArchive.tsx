@@ -19,7 +19,7 @@ export function ProjectsArchive() {
 
   return (
     <div className="mx-auto max-w-content px-6 py-16">
-      <h1 className="text-2xl font-medium text-foreground">Projects Archive</h1>
+      <h1 className="text-2xl font-medium text-foreground">Projects</h1>
       <div className="mt-6 max-w-sm">
         <SearchInput
           value={query}
