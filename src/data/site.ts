@@ -1,7 +1,7 @@
 export const site = {
   name: 'Eric Du',
   tagline: 'Software engineer interested in AI/ML',
-  bio: 'Experience with PLC, computer vision, automation, and infrastructure. My favorite languages are Rust \u{1F980}, Python, and C#. Some of my work has led me into protocol reverse engineering, developer tooling, machine vision, and systems that touch physical hardware.',
+  bio: 'Experience with infrastructure, PLC, computer vision, and automation. My favorite languages are Rust \u{1F980}, Python, and C#. Some of my work has led me into protocol reverse engineering, developer tooling, machine vision, and systems that touch physical hardware.',
   location: 'Davis, CA',
   email: 'ericdu610@gmail.com',
   website: 'ericdoo.com',
