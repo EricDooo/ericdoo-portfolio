@@ -26,7 +26,9 @@ export function Home() {
           <h1 className="text-3xl font-medium tracking-tight text-foreground">
             {site.name}
           </h1>
-          <p className="mt-1 text-muted">{site.tagline}</p>
+          <p className="mt-1 text-muted">
+            {site.tagline} &middot; {site.location}
+          </p>
           <p className="mt-4 max-w-prose text-foreground">{site.bio}</p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
             <a
@@ -48,10 +50,10 @@ export function Home() {
         </div>
       </div>
 
-      {/* Currently */}
+      {/* Experience */}
       <section className="mt-16">
         <h2 className="text-sm font-medium uppercase tracking-wide text-muted">
-          Currently
+          Experience
         </h2>
         <ul className="mt-4 space-y-6">
           {experience.map((entry) => (
@@ -108,18 +110,20 @@ export function Home() {
           Skills
         </h2>
         <dl className="mt-4 space-y-3 text-sm">
-          <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-            <dt className="w-24 flex-shrink-0 text-muted">Frontend</dt>
-            <dd className="text-foreground">{skills.frontend.join(', ')}</dd>
-          </div>
-          <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-            <dt className="w-24 flex-shrink-0 text-muted">Backend</dt>
-            <dd className="text-foreground">{skills.backend.join(', ')}</dd>
-          </div>
-          <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-            <dt className="w-24 flex-shrink-0 text-muted">Languages</dt>
-            <dd className="text-foreground">{skills.languages.join(', ')}</dd>
-          </div>
+          {(
+            [
+              ['Languages', skills.languages],
+              ['Frontend', skills.frontend],
+              ['Backend', skills.backend],
+              ['Data', skills.data],
+              ['Infra', skills.infra],
+            ] as const
+          ).map(([label, items]) => (
+            <div key={label} className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+              <dt className="w-24 flex-shrink-0 text-muted">{label}</dt>
+              <dd className="text-foreground">{items.join(', ')}</dd>
+            </div>
+          ))}
         </dl>
       </section>
     </div>

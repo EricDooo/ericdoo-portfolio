@@ -14,8 +14,8 @@ export function Header() {
   const { toggle } = useTheme()
 
   return (
-    <header className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
-      <nav className="flex items-center gap-5">
+    <header className="mx-auto flex max-w-content items-center justify-between px-4 py-2 sm:px-6 sm:py-4">
+      <nav className="flex items-center gap-1 sm:gap-5">
         {tabs.map((tab) => (
           <NavLink
             key={tab.to}
@@ -23,12 +23,12 @@ export function Header() {
             end={tab.end}
             className={({ isActive }) =>
               cn(
-                'flex items-center gap-1.5 text-sm font-medium',
+                'flex min-h-[44px] items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium sm:min-h-0 sm:px-0 sm:py-0',
                 isActive ? 'text-foreground' : 'text-muted hover:text-foreground',
               )
             }
           >
-            <tab.icon className="h-4 w-4" />
+            <tab.icon className="h-5 w-5 sm:h-4 sm:w-4" />
             <span className="hidden sm:inline">{tab.label}</span>
           </NavLink>
         ))}
@@ -37,7 +37,7 @@ export function Header() {
         type="button"
         onClick={toggle}
         aria-label="Toggle theme"
-        className="rounded-md border border-border px-3 py-1.5 text-xs text-muted hover:bg-surface"
+        className="min-h-[44px] rounded-md border border-border px-3.5 py-2 text-xs text-muted hover:bg-surface sm:min-h-0 sm:px-3 sm:py-1.5"
       >
         Theme
       </button>

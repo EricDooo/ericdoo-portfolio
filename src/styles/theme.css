@@ -68,7 +68,9 @@
 
   --container-content: 1100px;
 
-  /* System font stack -- zero network requests, instant first paint. */
+  /* System font stacks -- zero network requests, instant first paint. */
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }

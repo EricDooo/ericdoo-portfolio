@@ -1,15 +1,46 @@
 export const site = {
   name: 'Eric Du',
   tagline: 'Software engineer',
-  bio: 'I like building things end to end -- from infra and databases up through the UI. Currently working on web infrastructure and a couple of side projects.',
-  email: 'ericdu602@gmail.com',
+  bio: 'Sole software engineer for a 50-person manufacturer, with end-to-end ownership of most software and infrastructure -- internal tools and customer-facing systems alike.',
+  location: 'Davis, CA',
+  email: 'ericdu610@gmail.com',
+  website: 'ericdoo.com',
   github: 'https://github.com/EricDooo',
   linkedin: 'https://www.linkedin.com/in/ericdu602',
   resumeUrl: '/eric-du-resume.pdf',
 }
 
 export const skills = {
-  frontend: ['React', 'React Native', 'TypeScript', 'Vue.js', 'Astro', 'Svelte', 'Next.js'],
-  backend: ['FastAPI', 'Django', 'Node', 'GoLang', 'PostgreSQL/PostGIS', 'Redis', 'AWS'],
-  languages: ['TypeScript', 'Python', 'Java', 'C++', 'C', 'Go'],
+  frontend: ['React', 'SvelteKit', 'Vue.js', 'Next.js', 'React Native', 'Qt/PySide6'],
+  backend: ['Axum', 'FastAPI', 'Django', 'Node.js', 'REST APIs'],
+  languages: [
+    'Rust',
+    'Python',
+    'C#',
+    'Go',
+    'TypeScript',
+    'JavaScript',
+    'SQL',
+    'Bash',
+    'Structured Text (IEC 61131-3)',
+  ],
+  data: ['PostgreSQL', 'MySQL', 'InfluxDB', 'FileMaker', 'Apache Airflow', 'Redis'],
+  infra: ['Docker', 'Gitea', 'CI/CD', 'AWS (Bedrock, Lambda, S3)', 'Git'],
+}
+
+export const education = {
+  school: 'University of California, Davis',
+  href: 'https://www.ucdavis.edu',
+  location: 'Davis, CA',
+  period: 'Sep 2020 -- Dec 2023',
+  degree: 'Bachelor of Science in Computer Science',
+  gpa: '3.7/4.0',
+  coursework: [
+    'Deep Learning',
+    'Computer Vision',
+    'Operating Systems',
+    'Computer Networks',
+    'Databases',
+    'System Design',
+  ],
 }

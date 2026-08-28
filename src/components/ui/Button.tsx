@@ -9,7 +9,7 @@ export function Button({ variant = 'primary', className, ...props }: ButtonProps
   return (
     <button
       className={cn(
-        'rounded-md px-4 py-2 text-sm font-medium transition-colors',
+        'inline-flex min-h-[44px] items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors',
         variant === 'primary' &&
           'bg-primary text-primary-foreground hover:opacity-90',
         variant === 'ghost' &&
