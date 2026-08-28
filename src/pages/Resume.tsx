@@ -7,6 +7,7 @@ import { Button } from '../components/ui/Button'
 interface TimelineItem {
   key: string
   title: ReactNode
+  subtitle?: ReactNode
   meta: string
   detail: string
   href?: string
@@ -21,12 +22,17 @@ function Timeline({ items }: { items: TimelineItem[] }) {
       />
       {items.map((item) => {
         const row = (
-          <div className="grid gap-0.5 sm:flex sm:items-baseline sm:justify-between sm:gap-6">
-            <span className="flex-shrink-0">
-              <span className="font-bold text-foreground">{item.title}</span>{' '}
-              <span className="text-muted">({item.meta})</span>
-            </span>
-            <span className="text-sm text-muted sm:text-right">{item.detail}</span>
+          <div>
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+              <span className="font-bold text-foreground">
+                {item.title}
+                {item.subtitle && (
+                  <span className="font-normal text-muted"> -- {item.subtitle}</span>
+                )}
+              </span>
+              <span className="flex-shrink-0 text-sm text-muted">{item.meta}</span>
+            </div>
+            <p className="mt-1 text-sm text-muted">{item.detail}</p>
           </div>
         )
         const blockClass =
@@ -91,8 +97,9 @@ export function Resume() {
           items={experience.map((entry) => ({
             key: entry.organization,
             title: entry.organization,
+            subtitle: entry.role,
             meta: entry.period,
-            detail: `${entry.role} -- ${entry.summary}`,
+            detail: entry.summary,
             href: entry.organizationHref,
           }))}
         />
@@ -136,8 +143,9 @@ export function Resume() {
             {
               key: education.school,
               title: education.school,
+              subtitle: education.degree,
               meta: education.period,
-              detail: `${education.degree} -- GPA ${education.gpa}`,
+              detail: `GPA ${education.gpa}`,
               href: education.href,
             },
           ]}

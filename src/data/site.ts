@@ -12,7 +12,7 @@ export const site = {
 
 export const skills = {
   frontend: ['React', 'SvelteKit', 'Vue.js', 'Next.js', 'React Native', 'Qt/PySide6'],
-  backend: ['Axum', 'FastAPI', 'Django', 'Node.js', 'REST APIs'],
+  backend: ['Axum', 'FastAPI', 'Django', 'Node.js'],
   languages: [
     'Rust',
     'Python',
