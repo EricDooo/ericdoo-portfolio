@@ -23,7 +23,14 @@ export function Header() {
             end={tab.end}
             className={({ isActive }) =>
               cn(
-                'flex min-h-[44px] items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium sm:min-h-0 sm:px-0 sm:py-0',
+                // min-h-[44px] and this padding hold at every breakpoint --
+                // sm: used to zero both out for a tighter desktop look, but
+                // the sm: breakpoint (640px) is well within phone/tablet
+                // touch territory (a phone in landscape, a larger phone in
+                // portrait), not just mouse-driven desktop, so that made the
+                // tap target shrink to the bare text/icon's own line height
+                // on exactly the devices that needed it most.
+                'flex min-h-[44px] items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium',
                 isActive ? 'text-foreground' : 'text-muted hover:text-foreground',
               )
             }
@@ -37,7 +44,7 @@ export function Header() {
         type="button"
         onClick={toggle}
         aria-label="Toggle theme"
-        className="min-h-[44px] rounded-md border border-border px-3.5 py-2 text-xs text-muted hover:bg-surface sm:min-h-0 sm:px-3 sm:py-1.5"
+        className="min-h-[44px] rounded-md border border-border px-3.5 py-2 text-xs text-muted hover:bg-surface"
       >
         Theme
       </button>

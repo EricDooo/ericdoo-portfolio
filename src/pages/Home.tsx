@@ -83,31 +83,36 @@ export function Home() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {featured.map((project) => (
             // Stretched-link pattern (title's after:inset-0 covers the card)
-            // so the GitHub link can be a real sibling <a> instead of
+            // so the GitHub button can be a real sibling <a> instead of
             // nesting an <a> inside an <a>.
             <div
               key={project.title}
               className="group relative rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
             >
-              {project.githubHref && (
+              <div className="flex items-start justify-between gap-3">
                 <a
-                  href={project.githubHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${project.title} on GitHub`}
-                  className="absolute right-5 top-5 z-10 text-muted hover:text-primary"
+                  href={project.href}
+                  target={project.external ? '_blank' : undefined}
+                  rel={project.external ? 'noreferrer' : undefined}
+                  className="after:absolute after:inset-0"
                 >
-                  <GitHubIcon className="h-4 w-4" />
+                  <h3 className="font-medium text-foreground group-hover:underline">{project.title}</h3>
                 </a>
-              )}
-              <a
-                href={project.href}
-                target={project.external ? '_blank' : undefined}
-                rel={project.external ? 'noreferrer' : undefined}
-                className="after:absolute after:inset-0"
-              >
-                <h3 className="font-medium text-foreground group-hover:underline">{project.title}</h3>
-              </a>
+                {project.githubHref && (
+                  // Same border/text-muted/hover language as the header's
+                  // Theme button, so it reads as an obvious button rather
+                  // than a bare icon someone might not realize is clickable.
+                  <a
+                    href={project.githubHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="relative z-10 flex flex-shrink-0 items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-xs text-muted hover:border-primary hover:text-foreground"
+                  >
+                    <GitHubIcon className="h-3.5 w-3.5" />
+                    GitHub
+                  </a>
+                )}
+              </div>
               <p className="mt-1.5 text-sm text-muted">{project.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (

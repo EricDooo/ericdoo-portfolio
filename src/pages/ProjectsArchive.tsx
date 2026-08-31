@@ -35,7 +35,7 @@ export function ProjectsArchive() {
         <ul className="mt-8 divide-y divide-border">
           {filtered.map((project) => (
             <li key={project.title} className="group relative py-6 first:pt-0">
-              <div className="flex items-baseline justify-between gap-3">
+              <div className="flex items-center justify-between gap-3">
                 <a
                   href={project.href}
                   target={project.external ? '_blank' : undefined}
@@ -47,14 +47,17 @@ export function ProjectsArchive() {
                   </h2>
                 </a>
                 {project.githubHref && (
+                  // Same border/text-muted/hover language as the header's
+                  // Theme button, so it reads as an obvious button rather
+                  // than a bare icon someone might not realize is clickable.
                   <a
                     href={project.githubHref}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`${project.title} on GitHub`}
-                    className="relative z-10 flex-shrink-0 text-muted hover:text-primary"
+                    className="relative z-10 flex flex-shrink-0 items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 text-xs text-muted hover:border-primary hover:text-foreground"
                   >
-                    <GitHubIcon className="h-4 w-4" />
+                    <GitHubIcon className="h-3.5 w-3.5" />
+                    GitHub
                   </a>
                 )}
               </div>
