@@ -11,7 +11,6 @@ export function Home() {
 
   return (
     <div className="mx-auto max-w-content px-6 py-16">
-      {/* Intro */}
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
         <img
           src={profilePhoto}
@@ -50,7 +49,6 @@ export function Home() {
         </div>
       </div>
 
-      {/* Experience */}
       <section className="mt-16">
         <h2 className="text-sm font-medium uppercase tracking-wide text-muted">
           Experience
@@ -73,7 +71,6 @@ export function Home() {
         </ul>
       </section>
 
-      {/* Featured projects */}
       <section className="mt-16">
         <div className="flex items-baseline justify-between">
           <h2 className="text-sm font-medium uppercase tracking-wide text-muted">
@@ -85,26 +82,43 @@ export function Home() {
         </div>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {featured.map((project) => (
-            <a
+            // Stretched-link pattern (title's after:inset-0 covers the card)
+            // so the GitHub link can be a real sibling <a> instead of
+            // nesting an <a> inside an <a>.
+            <div
               key={project.title}
-              href={project.href}
-              target={project.external ? '_blank' : undefined}
-              rel={project.external ? 'noreferrer' : undefined}
-              className="block rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
+              className="group relative rounded-lg border border-border bg-surface p-5 transition-colors hover:border-primary"
             >
-              <h3 className="font-medium text-foreground">{project.title}</h3>
+              {project.githubHref && (
+                <a
+                  href={project.githubHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${project.title} on GitHub`}
+                  className="absolute right-5 top-5 z-10 text-muted hover:text-primary"
+                >
+                  <GitHubIcon className="h-4 w-4" />
+                </a>
+              )}
+              <a
+                href={project.href}
+                target={project.external ? '_blank' : undefined}
+                rel={project.external ? 'noreferrer' : undefined}
+                className="after:absolute after:inset-0"
+              >
+                <h3 className="font-medium text-foreground group-hover:underline">{project.title}</h3>
+              </a>
               <p className="mt-1.5 text-sm text-muted">{project.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
                   <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Skills */}
       <section className="mt-16">
         <h2 className="text-sm font-medium uppercase tracking-wide text-muted">
           Skills

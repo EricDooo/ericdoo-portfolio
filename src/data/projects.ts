@@ -5,6 +5,11 @@ export interface Project {
   href: string
   external?: boolean
   featured?: boolean
+  // Optional second link shown as a small GitHub icon alongside the card's
+  // main link (which goes to `href`, the live site) -- most entries here
+  // only ever had one link (the repo itself, or a hosted product page with
+  // no separate public repo), so this only needs setting when both exist.
+  githubHref?: string
 }
 
 // Trimmed to what's actually ready to show. Add more here as they're ready --
@@ -18,6 +23,7 @@ export const projects: Project[] = [
     href: 'https://ericdoo.com/costcogas',
     external: true,
     featured: true,
+    githubHref: 'https://github.com/EricDooo/costco-pump',
   },
   {
     title: 'RoomU',
