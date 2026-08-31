@@ -35,27 +35,29 @@ export function ProjectsArchive() {
         <ul className="mt-8 divide-y divide-border">
           {filtered.map((project) => (
             <li key={project.title} className="group relative py-6 first:pt-0">
-              {project.githubHref && (
+              <div className="flex items-baseline justify-between gap-3">
                 <a
-                  href={project.githubHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${project.title} on GitHub`}
-                  className="absolute right-0 top-6 z-10 text-muted hover:text-primary"
+                  href={project.href}
+                  target={project.external ? '_blank' : undefined}
+                  rel={project.external ? 'noreferrer' : undefined}
+                  className="after:absolute after:inset-0"
                 >
-                  <GitHubIcon className="h-4 w-4" />
+                  <h2 className="font-medium text-foreground group-hover:underline">
+                    {project.title}
+                  </h2>
                 </a>
-              )}
-              <a
-                href={project.href}
-                target={project.external ? '_blank' : undefined}
-                rel={project.external ? 'noreferrer' : undefined}
-                className="block after:absolute after:inset-0"
-              >
-                <h2 className="font-medium text-foreground group-hover:underline">
-                  {project.title}
-                </h2>
-              </a>
+                {project.githubHref && (
+                  <a
+                    href={project.githubHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} on GitHub`}
+                    className="relative z-10 flex-shrink-0 text-muted hover:text-primary"
+                  >
+                    <GitHubIcon className="h-4 w-4" />
+                  </a>
+                )}
+              </div>
               <p className="mt-1.5 text-sm text-muted">{project.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
