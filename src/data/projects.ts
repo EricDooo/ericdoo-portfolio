@@ -8,7 +8,7 @@ export interface Project {
 }
 
 // Trimmed to what's actually ready to show. Add more here as they're ready --
-// Costco Gas Tracker, Fish Classification, Task Tracker, etc. can come back.
+// Task Tracker, etc. can come back.
 export const projects: Project[] = [
   {
     title: 'RoomU',
@@ -35,5 +35,14 @@ export const projects: Project[] = [
     tags: ['PyTorch', 'Django'],
     href: 'https://github.com/EricDooo/Fish_Classification_CNN',
     external: true,
+  },
+  {
+    title: 'Costco Gas Tracker',
+    description:
+      'Tracks live Costco gas prices across the US, Canada, the UK, and eight more countries, with full price history and a live comparison against U.S. government regional fuel data.',
+    tags: ['React', 'FastAPI', 'PostgreSQL', 'Docker'],
+    href: 'https://ericdoo.com/costcogas',
+    external: true,
+    featured: true,
   },
 ]
