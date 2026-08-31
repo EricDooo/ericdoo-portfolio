@@ -11,6 +11,15 @@ export interface Project {
 // Task Tracker, etc. can come back.
 export const projects: Project[] = [
   {
+    title: 'Costco Gas Tracker',
+    description:
+      'Tracks live Costco gas prices across the US, Canada, the UK, and eight more countries, with full price history and a live comparison against U.S. government regional fuel data.',
+    tags: ['React', 'FastAPI', 'PostgreSQL', 'Docker'],
+    href: 'https://ericdoo.com/costcogas',
+    external: true,
+    featured: true,
+  },
+  {
     title: 'RoomU',
     description:
       'A roommate-matching app with real-time chat and a swipe feature, built exclusively for students.',
@@ -35,14 +44,5 @@ export const projects: Project[] = [
     tags: ['PyTorch', 'Django'],
     href: 'https://github.com/EricDooo/Fish_Classification_CNN',
     external: true,
-  },
-  {
-    title: 'Costco Gas Tracker',
-    description:
-      'Tracks live Costco gas prices across the US, Canada, the UK, and eight more countries, with full price history and a live comparison against U.S. government regional fuel data.',
-    tags: ['React', 'FastAPI', 'PostgreSQL', 'Docker'],
-    href: 'https://ericdoo.com/costcogas',
-    external: true,
-    featured: true,
   },
 ]
