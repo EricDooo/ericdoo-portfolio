@@ -18,7 +18,7 @@ export const resumeExperience: ResumeEntry[] = [
     href: 'https://symmetrylaser.com',
     period: 'Apr 2024 -- Aug 2026',
     intro:
-      'Only software engineer at a 50-person company, reporting to the CTO. Chose what to build and ran it in production.',
+      'Only software engineer at a 50-person company, reporting to the CEO. Chose what to build and ran it in production.',
     bullets: [
       'Built a 200GB PostgreSQL replica of the core FileMaker database and moved 12+ services onto it, cutting p50 reads from 4s to 10ms. Later used it to recover all 8 hours of writes lost when a failed update corrupted the primary.',
       "Replaced FileMaker's JDBC and ODBC drivers company-wide with a Rust reimplementation of its undocumented wire protocol, adding connection recovery, tracing, and table-affinity pooling that cut p50 latency 4x.",
