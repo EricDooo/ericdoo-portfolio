@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import { education, site, skills } from '../data/site'
-import { experience } from '../data/experience'
-import { projects } from '../data/projects'
+import { education, site } from '../data/site'
+import { resumeExperience, resumeProjects, resumeSkills } from '../data/resume'
+import type { ResumeEntry } from '../data/resume'
 import { Button } from '../components/ui/Button'
 
 interface TimelineItem {
@@ -9,7 +9,8 @@ interface TimelineItem {
   title: ReactNode
   subtitle?: ReactNode
   meta: string
-  detail: string
+  detail?: string
+  bullets?: string[]
   href?: string
 }
 
@@ -32,7 +33,14 @@ function Timeline({ items }: { items: TimelineItem[] }) {
               </span>
               <span className="flex-shrink-0 text-sm text-muted">{item.meta}</span>
             </div>
-            <p className="mt-1 text-sm text-muted">{item.detail}</p>
+            {item.detail && <p className="mt-1 text-sm text-muted">{item.detail}</p>}
+            {item.bullets && (
+              <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted marker:text-border">
+                {item.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            )}
           </div>
         )
         const blockClass =
@@ -59,13 +67,17 @@ function Timeline({ items }: { items: TimelineItem[] }) {
   )
 }
 
-const skillLines: [string, string[]][] = [
-  ['Languages', skills.languages],
-  ['Frontend', skills.frontend],
-  ['Backend', skills.backend],
-  ['Data', skills.data],
-  ['Infra', skills.infra],
-]
+function toTimelineItem(entry: ResumeEntry): TimelineItem {
+  return {
+    key: entry.title,
+    title: entry.title,
+    subtitle: entry.subtitle,
+    meta: entry.period,
+    detail: entry.intro,
+    bullets: entry.bullets,
+    href: entry.href,
+  }
+}
 
 const contactLinks: { label: string; href: string }[] = [
   { label: 'email', href: `mailto:${site.email}` },
@@ -93,31 +105,14 @@ export function Resume() {
         <h2 className="text-sm font-bold uppercase tracking-wide text-muted">
           Experience
         </h2>
-        <Timeline
-          items={experience.map((entry) => ({
-            key: entry.organization,
-            title: entry.organization,
-            subtitle: entry.role,
-            meta: entry.period,
-            detail: entry.summary,
-            href: entry.organizationHref,
-          }))}
-        />
+        <Timeline items={resumeExperience.map(toTimelineItem)} />
       </section>
 
       <section className="mt-10">
         <h2 className="text-sm font-bold uppercase tracking-wide text-muted">
           Projects
         </h2>
-        <Timeline
-          items={projects.map((project) => ({
-            key: project.title,
-            title: project.title,
-            meta: project.tags.join(', '),
-            detail: project.description,
-            href: project.external ? project.href : undefined,
-          }))}
-        />
+        <Timeline items={resumeProjects.map(toTimelineItem)} />
       </section>
 
       <section className="mt-10">
@@ -125,9 +120,9 @@ export function Resume() {
           Skills
         </h2>
         <dl className="mt-4 space-y-2 text-sm">
-          {skillLines.map(([label, items]) => (
+          {resumeSkills.map(([label, items]) => (
             <div key={label} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
-              <dt className="w-24 flex-shrink-0 font-bold text-foreground">{label}</dt>
+              <dt className="flex-shrink-0 font-bold text-foreground sm:w-52">{label}</dt>
               <dd className="text-muted">{items.join(', ')}</dd>
             </div>
           ))}
