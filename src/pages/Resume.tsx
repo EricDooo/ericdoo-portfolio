@@ -140,7 +140,6 @@ export function Resume() {
               title: education.school,
               subtitle: education.degree,
               meta: education.period,
-              detail: `GPA ${education.gpa}`,
               href: education.href,
             },
           ]}
